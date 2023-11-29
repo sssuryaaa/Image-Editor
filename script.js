@@ -313,7 +313,7 @@ function save(evt){
 
 	const tempLink=document.createElement('a');
 	tempLink.href=URL.createObjectURL(blob);
-	tempLink.download="image.jpg";
+	tempLink.download="image.jpeg";
 
 	tempLink.click();
 }
