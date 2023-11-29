@@ -271,6 +271,7 @@ function reset(){
 
 function upload(evt){
 	document.getElementsByTagName("img")[0].src=URL.createObjectURL(evt.currentTarget.files[0]);
+	reveal();
 }
 
 /*function store(){
@@ -302,6 +303,11 @@ function upload(evt){
 
 
 } */
+
+function reveal(){
+	var x=document.getElementsByClassName('container')[0];
+	x.className=x.className.replace(" disable","");
+}
 
 function save(evt){
 	var x=document.getElementsByTagName('img')[0];

@@ -13,6 +13,13 @@ body{
 	margin-top: 5%;
 	overflow: auto;
 	border-radius: 5px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.container.disable .editor-panel,
+.container.disable .controls .reset-filter,
+.container.disable .controls .last2{
+	opacity: 0.5;
+  	pointer-events: none;
 }
 h2{
 	text-align: center;
@@ -48,6 +55,10 @@ h2{
 	padding: 10px;
 	overflow: hidden;
 	font-family: inherit;
+}
+.options>button:hover{
+	cursor: pointer;
+	background-color: grey;
 }
 .options .pos{
 	background-color: blue;
@@ -126,6 +137,9 @@ img{
 	border-radius: 2px;
 	padding: 15px;
 }
+.reset-filter:hover{
+	cursor: pointer;
+}
 .last1{
 	border: 1px solid black;
 	padding: 14px; 
@@ -135,10 +149,16 @@ img{
 	color: white;
 	border-radius: 2px;
 }
+.last1:hover{
+	cursor: pointer;
+}
 .last2{
 	border: 1px solid black;
 	padding: 15px; 
 	background-color: blue;
 	color: white;
 	border-radius: 2px;
+}
+.last2:hover{
+	cursor: pointer;
 }
