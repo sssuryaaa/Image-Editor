@@ -211,31 +211,31 @@ function func(evt){
 			x[0].style.filter+="invert("+evt.currentTarget.value+"%)";
 		}
 	}
-	store();
 }
 
 function inform(idname){
 	document.getElementsByClassName("value")[0].innerText=document.getElementById(idname).value+"%";
 }
-
+let rotate=0,flipVertical=1,flipHorizontal=1;
 function change(val){
 	var x=document.getElementsByTagName('img')[0];
 	var y=document.getElementsByClassName("wrapper")[0];
 	if(val=='left'){
 		x.style.transform+="rotate(270deg)";
+		rotate-=90;
 	}
 	else if(val=='right'){
 		x.style.transform+="rotate(90deg)";
-		console.log(x.offsetWidth);
-		console.log(x.offsetHeight);
+		rotate+=90;
 	}
 	else if(val=='vert'){
 		x.style.transform+="scaleY(-1)";
+		flipVertical = flipVertical === 1 ? -1 : 1;
 	}
 	else{
 		x.style.transform+="scaleX(-1)";
+		flipHorizontal = flipHorizontal === 1 ? -1 : 1;
 	}
-	store();
 }
 
 function reset(){
@@ -264,32 +264,73 @@ function reset(){
 	document.getElementsByClassName('name')[0].innerText="Saturation";
 	document.getElementsByClassName('value')[0].innerText="100%";
 
-	store();
+	rotate=0;
+	flipHorizontal=1;
+	flipVertical=1;
 }
 
 function upload(evt){
 	document.getElementsByTagName("img")[0].src=URL.createObjectURL(evt.currentTarget.files[0]);
 }
 
-function store(){
+/*function store(){
 	var x=document.getElementsByTagName('img')[0];
 
 	const canvas=document.createElement('canvas');
 	const context=canvas.getContext('2d');
 
-	canvas.width=x.width;
-	canvas.height=x.height;
+	canvas.width=x.naturalWidth;
+	canvas.height=x.naturalHeight;
 
-	context.drawImage(x,0,0);
+	let b=document.getElementById('brt').value;
+	let s=document.getElementById('sat').value;
+	let g=document.getElementById('gry').value;
+	let in=document.getElementById('inv').value;
+	context.filter='brightness('+b+'%) saturate('+s+'%) grayscale('+g+'%) invert('+in+'%)';
+	context.translate(canvas.width / 2, canvas.height / 2);
+	if(rotate !== 0) {
+        ctx.rotate(rotate * Math.PI / 180);
+    }
+    ctx.scale(flipHorizontal, flipVertical);
 
-	const editedImageData= canvas.toDataURL('image/jpg');
-	console.log(editedImageData);
+	context.drawImage(x,-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
 
-	localStorage.setItem('editedImage',editedImageData);
-}
+	const link = document.createElement("a");
+    link.download = "image.jpg";
+    link.href = canvas.toDataURL();
+    link.click();
+
+
+} */
 
 function save(evt){
 	var x=document.getElementsByTagName('img')[0];
+
+	const canvas=document.createElement('canvas');
+	const context=canvas.getContext('2d');
+
+	canvas.width=x.naturalWidth;
+	canvas.height=x.naturalHeight;
+
+	let b=document.getElementById('brt').value;
+	let s=document.getElementById('sat').value;
+	let g=document.getElementById('gry').value;
+	let i = document.getElementById('inv').value;
+
+	context.filter='brightness('+b+'%) saturate('+s+'%) grayscale('+g+'%) invert('+i+'%)';
+	context.translate(canvas.width / 2, canvas.height / 2);
+	if(rotate !== 0) {
+        context.rotate(rotate * Math.PI / 180);
+    }
+    context.scale(flipHorizontal, flipVertical);
+
+	context.drawImage(x,-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+
+	const link = document.createElement("a");
+    link.download = "image.jpg";
+    link.href = canvas.toDataURL();
+    link.click();
+
 	/*var tempLink=document.createElement('a');
 	tempLink.href=x.src;
 	tempLink.download='image.jpg';
@@ -308,7 +349,7 @@ function save(evt){
 		document.body.removeChild(tempLink);
 	});*/
 
-	const editedImageData=localStorage.getItem('editedImage');
+	/*const editedImageData=localStorage.getItem('editedImage');
 
 	const blob=new Blob([editedImageData],{type: 'image/jpg'});
 
@@ -316,5 +357,7 @@ function save(evt){
 	tempLink.href=URL.createObjectURL(blob);
 	tempLink.download="image.jpg";
 
-	tempLink.click();
+	tempLink.click();*/
+
+
 }
