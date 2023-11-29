@@ -211,6 +211,7 @@ function func(evt){
 			x[0].style.filter+="invert("+evt.currentTarget.value+"%)";
 		}
 	}
+	store();
 }
 
 function inform(idname){
@@ -234,6 +235,7 @@ function change(val){
 	else{
 		x.style.transform+="scaleX(-1)";
 	}
+	store();
 }
 
 function reset(){
@@ -261,23 +263,39 @@ function reset(){
 
 	document.getElementsByClassName('name')[0].innerText="Saturation";
 	document.getElementsByClassName('value')[0].innerText="100%";
+
+	store();
 }
 
 function upload(evt){
 	document.getElementsByTagName("img")[0].src=URL.createObjectURL(evt.currentTarget.files[0]);
-	console.log(document.getElementsByTagName("img")[0].offsetWidth);
-	console.log(document.getElementsByTagName("img")[0].offsetHeight);
+}
+
+function store(){
+	var x=document.getElementsByTagName('img')[0];
+
+	const canvas=document.createElement('canvas');
+	const context=canvas.getContext('2d');
+
+	canvas.width=x.width;
+	canvas.height=x.height;
+
+	context.drawImage(x,0,0);
+
+	const editedImageData= canvas.toDataURL('image/png');
+
+	localStorage.setItem('editedImage',editedImageData);
 }
 
 function save(evt){
 	var x=document.getElementsByTagName('img')[0];
-	var tempLink=document.createElement('a');
+	/*var tempLink=document.createElement('a');
 	tempLink.href=x.src;
 	tempLink.download='image.jpg';
 	document.body.appendChild(tempLink);
 	tempLink.click();
 	document.body.removeChild(tempLink);
-	console.log('save');
+	console.log('save');*/
 
 	/*fetch(x.src).then(response=>response.blob()).then(blob=>{
 		const tempLink=document.createElement('a');
@@ -288,4 +306,14 @@ function save(evt){
 		tempLink.click();
 		document.body.removeChild(tempLink);
 	});*/
+
+	const editedImageData=localStorage.getItem('editedImage');
+
+	const blob=new Blob([editedImageData],{type: 'image/png'});
+
+	const tempLink=document.createElement('a');
+	a.href=URL.createObjectURL(blob);
+	tempLink.download="image.png";
+
+	tempLink.click();
 }
