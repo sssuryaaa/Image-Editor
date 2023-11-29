@@ -271,15 +271,15 @@ function upload(evt){
 
 function save(evt){
 	var x=document.getElementsByTagName('img')[0];
-	/*var tempLink=document.createElement('a');
+	var tempLink=document.createElement('a');
 	tempLink.href=x.src;
 	tempLink.download='image.jpg';
 	document.body.appendChild(tempLink);
 	tempLink.click();
 	document.body.removeChild(tempLink);
-	console.log('save');*/
+	console.log('save');
 
-	fetch(x.src).then(response=>response.blob()).then(blob=>{
+	/*fetch(x.src).then(response=>response.blob()).then(blob=>{
 		const tempLink=document.createElement('a');
 		const objectURL=URL.createObjectURL(blob);
 		tempLink.href=objectURL;
@@ -287,5 +287,5 @@ function save(evt){
 		document.body.appendChild(tempLink);
 		tempLink.click();
 		document.body.removeChild(tempLink);
-	});
+	});*/
 }
