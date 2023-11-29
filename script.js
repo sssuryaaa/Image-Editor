@@ -282,7 +282,7 @@ function store(){
 
 	context.drawImage(x,0,0);
 
-	const editedImageData= canvas.toDataURL('image/png');
+	const editedImageData= canvas.toDataURL('image/jpg');
 
 	localStorage.setItem('editedImage',editedImageData);
 }
@@ -309,11 +309,11 @@ function save(evt){
 
 	const editedImageData=localStorage.getItem('editedImage');
 
-	const blob=new Blob([editedImageData],{type: 'image/png'});
+	const blob=new Blob([editedImageData],{type: 'image/jpg'});
 
 	const tempLink=document.createElement('a');
-	a.href=URL.createObjectURL(blob);
-	tempLink.download="image.png";
+	tempLink.href=URL.createObjectURL(blob);
+	tempLink.download="image.jpg";
 
 	tempLink.click();
 }
