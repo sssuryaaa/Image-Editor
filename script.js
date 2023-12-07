@@ -3,7 +3,6 @@
 function fun(evt){
 	if(evt.currentTarget.className==="btn neg"){
 		var x=document.querySelectorAll('.btn');
-		//console.log(x.length);
 		for(let i=0;i<x.length;i++){
 			x[i].className="btn neg";
 		}
@@ -16,7 +15,6 @@ function fun(evt){
 		for(let i=0;i<z.length;i++){
 			z[i].className="slid neg";
 		}
-		console.log(evt.currentTarget.innerText);
 		if(evt.currentTarget.innerText=="Saturation"){
 			document.getElementById("sat").className="slid pos";
 			inform("sat");
@@ -43,15 +41,6 @@ function func(evt){
 	var y=document.getElementsByClassName("btn pos")[0].innerText;
 
 	if(y=="Saturation"){
-		//let a=x[0].style.filter.match(/[0-9]*/g);
-		//if(a[9]){
-		//	x[0].style.filter=x[0].style.filter.replace(a[9],evt.currentTarget.value);
-		//}
-		//else{
-		//	x[0].style.filter+="saturate("+evt.currentTarget.value+"%)";
-		//}
-
-
 		let pos=x[0].style.filter.search('saturate');
 		let count=0,i=pos+9;
 		if(pos!=-1){
@@ -68,14 +57,12 @@ function func(evt){
 				let temp1=x[0].style.filter.substring(0,pos+9);
 				let temp2=x[0].style.filter.substring(pos+10);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else if(count==2){
 				let temp=x[0].style.filter.substr(pos+9,2);
 				let temp1=x[0].style.filter.substring(0,pos+9);
 				let temp2=x[0].style.filter.substring(pos+11);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else{
 				let temp=x[0].style.filter.substr(pos+9,3);
@@ -83,8 +70,6 @@ function func(evt){
 				let temp2=x[0].style.filter.substring(pos+12);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
 
-				console.log(temp1,temp2);
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 		}
 		else{
@@ -92,8 +77,6 @@ function func(evt){
 		}
 	}
 	else if(y=="Brightness"){
-		//x[0].style.filter+="brightness(" + evt.currentTarget.value + "%)";
-
 		let pos=x[0].style.filter.search('brightness');
 		let count=0,i=pos+11;
 		if(pos!=-1){
@@ -110,21 +93,18 @@ function func(evt){
 				let temp1=x[0].style.filter.substring(0,pos+11);
 				let temp2=x[0].style.filter.substring(pos+12);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else if(count==2){
 				let temp=x[0].style.filter.substr(pos+11,2);
 				let temp1=x[0].style.filter.substring(0,pos+11);
 				let temp2=x[0].style.filter.substring(pos+13);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else{
 				let temp=x[0].style.filter.substr(pos+11,3);
 				let temp1=x[0].style.filter.substring(0,pos+11);
 				let temp2=x[0].style.filter.substring(pos+14);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 		}
 		else{
@@ -132,8 +112,6 @@ function func(evt){
 		}
 	}
 	else if(y=="Grayscale"){
-		//x[0].style.filter+="grayscale(" + evt.currentTarget.value + "%)";
-
 		let pos=x[0].style.filter.search('grayscale');
 		let count=0,i=pos+10;
 		if(pos!=-1){
@@ -150,21 +128,18 @@ function func(evt){
 				let temp1=x[0].style.filter.substring(0,pos+10);
 				let temp2=x[0].style.filter.substring(pos+11);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else if(count==2){
 				let temp=x[0].style.filter.substr(pos+10,2);
 				let temp1=x[0].style.filter.substring(0,pos+10);
 				let temp2=x[0].style.filter.substring(pos+12);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else{
 				let temp=x[0].style.filter.substr(pos+10,3);
 				let temp1=x[0].style.filter.substring(0,pos+10);
 				let temp2=x[0].style.filter.substring(pos+13);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 		}
 		else{
@@ -172,8 +147,6 @@ function func(evt){
 		}
 	}
 	else{
-		//x[0].style.filter+="invert(" + evt.currentTarget.value + "%)";
-
 		let pos=x[0].style.filter.search('invert');
 		let count=0,i=pos+7;
 		if(pos!=-1){
@@ -197,14 +170,12 @@ function func(evt){
 				let temp1=x[0].style.filter.substring(0,pos+7);
 				let temp2=x[0].style.filter.substring(pos+9);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 			else{
 				let temp=x[0].style.filter.substr(pos+7,3);
 				let temp1=x[0].style.filter.substring(0,pos+7);
 				let temp2=x[0].style.filter.substring(pos+10);
 				x[0].style.filter=temp1+evt.currentTarget.value+temp2;
-				//x[0].style.filter=x[0].style.filter.replace(temp,evt.currentTarget.value);
 			}
 		}
 		else{
@@ -250,7 +221,6 @@ function reset(){
 	}
 
 	var z=document.querySelectorAll(".slid");
-	console.log(z.length);
 	z[0].className="slid pos";
 	z[1].className="slid neg";
 	z[2].className="slid neg";
@@ -273,36 +243,6 @@ function upload(evt){
 	document.getElementsByTagName("img")[0].src=URL.createObjectURL(evt.currentTarget.files[0]);
 	reveal();
 }
-
-/*function store(){
-	var x=document.getElementsByTagName('img')[0];
-
-	const canvas=document.createElement('canvas');
-	const context=canvas.getContext('2d');
-
-	canvas.width=x.naturalWidth;
-	canvas.height=x.naturalHeight;
-
-	let b=document.getElementById('brt').value;
-	let s=document.getElementById('sat').value;
-	let g=document.getElementById('gry').value;
-	let in=document.getElementById('inv').value;
-	context.filter='brightness('+b+'%) saturate('+s+'%) grayscale('+g+'%) invert('+in+'%)';
-	context.translate(canvas.width / 2, canvas.height / 2);
-	if(rotate !== 0) {
-        ctx.rotate(rotate * Math.PI / 180);
-    }
-    ctx.scale(flipHorizontal, flipVertical);
-
-	context.drawImage(x,-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-
-	const link = document.createElement("a");
-    link.download = "image.jpg";
-    link.href = canvas.toDataURL();
-    link.click();
-
-
-} */
 
 function reveal(){
 	var x=document.getElementsByClassName('container')[0];
@@ -336,34 +276,4 @@ function save(evt){
     link.download = "image.jpg";
     link.href = canvas.toDataURL();
     link.click();
-
-	/*var tempLink=document.createElement('a');
-	tempLink.href=x.src;
-	tempLink.download='image.jpg';
-	document.body.appendChild(tempLink);
-	tempLink.click();
-	document.body.removeChild(tempLink);
-	console.log('save');*/
-
-	/*fetch(x.src).then(response=>response.blob()).then(blob=>{
-		const tempLink=document.createElement('a');
-		const objectURL=URL.createObjectURL(blob);
-		tempLink.href=objectURL;
-		tempLink.download="image.jpg";
-		document.body.appendChild(tempLink);
-		tempLink.click();
-		document.body.removeChild(tempLink);
-	});*/
-
-	/*const editedImageData=localStorage.getItem('editedImage');
-
-	const blob=new Blob([editedImageData],{type: 'image/jpg'});
-
-	const tempLink=document.createElement('a');
-	tempLink.href=URL.createObjectURL(blob);
-	tempLink.download="image.jpg";
-
-	tempLink.click();*/
-
-
 }
