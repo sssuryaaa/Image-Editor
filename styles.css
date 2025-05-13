@@ -141,6 +141,10 @@ img{
 	display: flex;
 	justify-content: space-between;
 }
+.row > *{
+	margin-left: 10px;
+	font-size: 13px !important;
+}
 .last1{
 	padding: 14px; 
 	font-size: inherit;
